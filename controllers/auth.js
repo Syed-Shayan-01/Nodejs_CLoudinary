@@ -44,12 +44,12 @@ const findUser = async (req, res) => {
 const updateUser = async (req, res) => {
     try {
         const { username, email } = req.body;
-        const deleted = await Auth.findByIdAndUpdate({ _id: req.params.id }, { username, email });
-        if (deleted) {
-            return res.status(204).send({ status: 204, message: "USER DELETED SUCCESSFULY" })
+        const updates = await Auth.findByIdAndUpdate({ _id: req.params.id }, { username, email });
+        if (updates) {
+            return res.status(204).send({ status: 204, message: "USER  UPDATED SUCESSFULY" })
         }
     } catch (err) {
-        return res.status(400).send({ status: 400, message: "USER DOES'NT DELETE" })
+        return res.status(400).send({ status: 400, message: "USER DOES'NT UPDATE" })
     }
 }
 
